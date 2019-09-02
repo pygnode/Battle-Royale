@@ -9,6 +9,8 @@ Tons of Players can engage in a massive free for all where there is only one win
 Players will battle across Moonglade seeking out protective relics to save them from the deadly infection in the air while attempting to survive from their fellow players. 
 
 
+
+
 Features
 ----------
 
@@ -17,7 +19,9 @@ Features
 - Battle Royale Season Quests
 - Battle Royale Teleporter
 
-
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=vsTW7kQ1CNc
+" target="_blank"><img src="http://img.youtube.com/vi/vsTW7kQ1CNc/0.jpg" 
+alt="Battle Royale" width="240" height="180" border="10" /></a>
 
 
 Details
