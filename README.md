@@ -1,0 +1,82 @@
+Trinity Battle Royale
+---------------------
+
+
+Trinity Battle Royale is a custom outdoor pvp experience for TrinityCore 3.3.5a. 
+
+Tons of Players can engage in a massive free for all where there is only one winner. 
+
+Players will battle across Moonglade seeking out protective relics to save them from the deadly infection in the air while attempting to survive from their fellow players. 
+
+
+Features
+----------
+
+- Battle Royale World PvP mode
+- Rewards Vendor
+- Battle Royale Season Quests
+- Battle Royale Teleporter
+
+
+
+
+Details
+--------
+
+- Customiziable Player limit allows server owners to specify how many players are allowed in the battle royale at once
+
+- PvP kills during the battle royale grant 1 `Bloodshed Token` used as reward currency. 
+
+- Winning a Battle Royale match grants 1 `King's Badge` which is used as premium reward currency.
+
+- Instead of typical zone-style protection, Players will have to interact with relics that appear throughout the match. By interacting with a relic, they will recieve a temporary buff that protects them from the Infection.
+
+- The Infection is Professor Putricide's concoction that has suffocated the air of the battle royale. Without the relic's protection, you'll perish!
+
+- Last player standing wins the battle royale!
+
+
+How to install
+----------------
+
+
+1. Copy all the follow directories under `src/server/scripts/Custom` in your trinitycore directory
+
+```
+cp -R battle_royal* $TRINITY_ROOT/src/server/scripts/Custom
+```
+
+
+where $TRINITY_ROOT is the root of your trinitycore code.
+
+2. Add the loading function definitions to your `custom_script_loader.cpp` (See uploaded example)
+
+```
+...
+void AddSC_battle_royal();
+void AddSC_battle_royal_rewards();
+void AddSC_battle_royal_gamemaster();
+
+void AddCustomScripts()
+{
+    ...
+    AddSC_battle_royal();
+    AddSC_battle_royal_gamemaster();
+    AddSC_battle_royal_rewards();
+}
+```
+
+3. Run the `.sql` scripts under `./sql` in your Database for custom reward items, npcs, and quests.
+
+
+
+Contributing
+--------------
+
+Feel free to put any PR against this repo, a community driven approach is very encouraged.
+
+
+Credits
+--------
+
+##### Created by [git://pygnode](https://github.com/pygnode/)
