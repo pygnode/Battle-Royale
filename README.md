@@ -17,6 +17,9 @@ Features
 - Battle Royale Season Quests
 - Battle Royale Teleporter
 
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=vsTW7kQ1CNc
+" target="_blank"><img src="http://img.youtube.com/vi/vsTW7kQ1CNc/0.jpg" 
+alt="Battle Royale" width="240" height="180" border="10" /></a>
 
 
 
