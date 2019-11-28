@@ -9,8 +9,6 @@ Tons of Players can engage in a massive free for all where there is only one win
 Players will battle across Moonglade seeking out protective relics to save them from the deadly infection in the air while attempting to survive from their fellow players. 
 
 
-
-
 Features
 ----------
 
@@ -19,9 +17,7 @@ Features
 - Battle Royale Season Quests
 - Battle Royale Teleporter
 
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=vsTW7kQ1CNc
-" target="_blank"><img src="http://img.youtube.com/vi/vsTW7kQ1CNc/0.jpg" 
-alt="Battle Royale" width="240" height="180" border="10" /></a>
+
 
 
 Details
@@ -72,6 +68,22 @@ void AddCustomScripts()
 
 3. Run the `.sql` scripts under `./sql` in your Database for custom reward items, npcs, and quests.
 
+4. Add `OUTDOOR_PVP_BR` value to `OutdoorPvPTypes` enum inside `/server/game/OutdoorPvP/OutdoorPvP.h`
+```
+OutdoorPvP.h
+enum OutdoorPvPTypes
+{
+    OUTDOOR_PVP_HP = 1,
+    OUTDOOR_PVP_NA,
+    OUTDOOR_PVP_TF,
+    OUTDOOR_PVP_ZM,
+    OUTDOOR_PVP_SI,
+    OUTDOOR_PVP_EP,
+    OUTDOOR_PVP_BR, // <-- Here
+
+    MAX_OUTDOORPVP_TYPES
+};
+```
 
 
 Contributing
