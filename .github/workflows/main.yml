@@ -38,7 +38,7 @@ jobs:
         libreadline-dev
     - name: Clone TrinityCore & Move Files
       run: |
-        git clone https://github.com/TrinityCore/TrinityCore.git
+        git clone --single-branch --branch 3.3.5 https://github.com/TrinityCore/TrinityCore.git
         ls
         cp -r battle_royal* TrinityCore/src/server/scripts/Custom/
         cp custom_script_loader.cpp TrinityCore/src/server/scripts/Custom/
