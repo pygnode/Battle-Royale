@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  pull_request:
+    branches: 
+      - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Install dependencies
+      run: |
+        apt-get update -y
+        apt-get install -y \
+        git \
+        cmake \
+        gcc \
+        g++ \
+        wget \
+        libmariadbclient-dev \
+        libssl1.0-dev \
+        libbz2-dev \
+        libreadline-dev \
+        libncurses-dev \
+        libboost-all-dev \
+        mysql-server \
+        p7zip \
+        zlib1g \
+        zlib1g-dev \
+        libreadline-dev
+    - name: Clone TrinityCore & Move Files
+      run: |
+        git clone https://github.com/TrinityCore/TrinityCore.git
+        cp -r battle_royal* TrinityCore/src/server/scripts/Custom/
+    - name: Test Compile
+      run: |
+        cmake \
+        -DBOOST_INCLUDEDIR=/usr/include/boost \
+        -DCMAKE_SYSTEM_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/ \
+        -DTOOLS=0 \
+        -DWITH_WARNINGS=1 \
+        -DSCRIPTS_OUTLAND="disabled" \
+        -DSCRIPTS_NORTHREND="disabled" \
+         TrinityCore/
