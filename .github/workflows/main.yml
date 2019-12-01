@@ -49,9 +49,10 @@ jobs:
         -DSCRIPTS_OUTLAND="disabled" \
         -DSCRIPTS_NORTHREND="disabled" \
          TrinityCore/
-    - name: Build
+    - name: Make
       run: |
-          cd TrinityCore
-          cmake --target all
-          cmake --taret worldserver
+        cd Battle-Royale
+        ls
+        cd src/server/worldserver
+        make
         
