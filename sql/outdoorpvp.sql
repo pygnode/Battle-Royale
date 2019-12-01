@@ -1,0 +1,1 @@
+INSERT INTO world.outdoorpvp_template (TypeId, ScriptName, comment) VALUES (7, 'outdoorpvp_mbr', 'Moonglade Battle Royal');
