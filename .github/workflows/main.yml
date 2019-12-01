@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Checkout Revision
+      uses: actions/checkout@v1
     - name: Install dependencies
       run: |
         sudo apt-get update -y
