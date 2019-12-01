@@ -39,6 +39,8 @@ jobs:
         ls
         cp -r battle_royal* TrinityCore/src/server/scripts/Custom/
         cp custom_script_loader.cpp TrinityCore/src/server/scripts/Custom/
+        sed -i '' 's#OUTDOOR_PVP_EP,#OUTDOOR_PVP_EP,OUTDOOR_PVP_BR,#' TrinityCore/src/server/game/OutdoorPvP/OutdoorPvP.h
+        cat TrinityCore/src/server/game/OutdoorPvP/OutdoorPvP.h
     - name: cmake
       run: |
         cmake \
@@ -50,5 +52,5 @@ jobs:
         -DSCRIPTS_NORTHREND="disabled" \
          TrinityCore/
     - name: Make
-      run: make
+      run: make worldserver/fast
         
