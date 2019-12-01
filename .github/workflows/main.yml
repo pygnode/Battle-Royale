@@ -39,7 +39,7 @@ jobs:
         ls
         cp -r battle_royal* TrinityCore/src/server/scripts/Custom/
         cp custom_script_loader.cpp TrinityCore/src/server/scripts/Custom/
-    - name: Test Compile
+    - name: cmake
       run: |
         cmake \
         -DBOOST_INCLUDEDIR=/usr/include/boost \
@@ -49,3 +49,8 @@ jobs:
         -DSCRIPTS_OUTLAND="disabled" \
         -DSCRIPTS_NORTHREND="disabled" \
          TrinityCore/
+    - name: Build
+      run: |
+        - cmake --target all \
+          cmake --taret worldserver
+        
