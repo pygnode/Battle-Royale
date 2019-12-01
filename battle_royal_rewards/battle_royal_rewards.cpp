@@ -19,6 +19,25 @@
 #include "OutdoorPvP.h"
 #include "UnitDefines.h"
 
+
+bool grantTitleReward
+(int titleID, Player* player) {
+    if (CharTitlesEntry const *titleEntry = sCharTitlesStore.LookupEntry(titleID)) {
+        player->SetTitle(titleEntry);
+        return true;
+    }
+    return false;
+}
+
+bool grantMountReward(int mountSpellID, Player* player) {
+    if (!player->HasSpell(mountSpellID)) {
+        player->LearnSpell(mountSpellID, false);
+        return true;
+    }
+    return false;
+}
+
+
 class item_battle_royal_reward_title_vanquisher : public ItemScript {
 public:
     item_battle_royal_reward_title_vanquisher() : ItemScript(
@@ -26,9 +45,7 @@ public:
 
     bool OnUse(Player *player, Item *item,
                SpellCastTargets const & /*targets*/) override {
-        if (CharTitlesEntry const *titleEntry = sCharTitlesStore.LookupEntry(
-            VANQUISHER))
-            player->SetTitle(titleEntry);
+        return grantTitleReward(VANQUISHER, player);
     }
 };
 
@@ -39,12 +56,7 @@ public:
 
     bool OnUse(Player *player, Item *item,
                SpellCastTargets const & /*targets*/) override {
-        if (CharTitlesEntry const *titleEntry = sCharTitlesStore.LookupEntry(
-            BATTLEMASTER)) {
-            player->SetTitle(titleEntry);
-        } else {
-            player->SetTitle(titleEntry);
-        }
+        return grantTitleReward(BATTLEMASTER, player);
     }
 };
 
@@ -55,9 +67,7 @@ public:
 
     bool OnUse(Player *player, Item *item,
                SpellCastTargets const & /*targets*/) override {
-        if (CharTitlesEntry const *titleEntry = sCharTitlesStore.LookupEntry(
-            COMMANDER))
-            player->SetTitle(titleEntry);
+        return grantTitleReward(COMMANDER, player);
     }
 };
 
@@ -68,9 +78,7 @@ public:
 
     bool OnUse(Player *player, Item *item,
                SpellCastTargets const & /*targets*/) override {
-        if (CharTitlesEntry const *titleEntry = sCharTitlesStore.LookupEntry(
-            GRUNT))
-            player->SetTitle(titleEntry);
+        return grantTitleReward(GRUNT, player);
     }
 };
 
@@ -81,9 +89,7 @@ public:
 
     bool OnUse(Player *player, Item *item,
                SpellCastTargets const & /*targets*/) override {
-        if (CharTitlesEntry const *titleEntry = sCharTitlesStore.LookupEntry(
-            BRUTAL_GLADIATOR))
-            player->SetTitle(titleEntry);
+        return grantTitleReward(BRUTAL_GLADIATOR, player);
     }
 };
 
@@ -94,9 +100,7 @@ public:
 
     bool OnUse(Player *player, Item *item,
                SpellCastTargets const & /*targets*/) override {
-        if (CharTitlesEntry const *titleEntry = sCharTitlesStore.LookupEntry(
-            KNIGHT_CHAMPION))
-            player->SetTitle(titleEntry);
+        return grantTitleReward(KNIGHT_CHAMPION, player);
     }
 };
 
@@ -107,9 +111,7 @@ public:
 
     bool OnUse(Player *player, Item *item,
                SpellCastTargets const & /*targets*/) override {
-        if (CharTitlesEntry const *titleEntry = sCharTitlesStore.LookupEntry(
-            FLAME_KEEPER))
-            player->SetTitle(titleEntry);
+        return grantTitleReward(FLAME_KEEPER, player);
     }
 };
 
@@ -120,9 +122,7 @@ public:
 
     bool OnUse(Player *player, Item *item,
                SpellCastTargets const & /*targets*/) override {
-        if (CharTitlesEntry const *titleEntry = sCharTitlesStore.LookupEntry(
-            DEADLY_GLADIATOR))
-            player->SetTitle(titleEntry);
+        return grantTitleReward(DEADLY_GLADIATOR, player);
     }
 };
 
@@ -133,9 +133,7 @@ public:
 
     bool OnUse(Player *player, Item *item,
                SpellCastTargets const & /*targets*/) override {
-        if (CharTitlesEntry const *titleEntry = sCharTitlesStore.LookupEntry(
-            MERRYMAKER))
-            player->SetTitle(titleEntry);
+        return grantTitleReward(MERRYMAKER, player);
     }
 };
 
@@ -146,9 +144,7 @@ public:
 
     bool OnUse(Player *player, Item *item,
                SpellCastTargets const & /*targets*/) override {
-        if (CharTitlesEntry const *titleEntry = sCharTitlesStore.LookupEntry(
-            BLOOD_GUARD))
-            player->SetTitle(titleEntry);
+        return grantTitleReward(BLOOD_GUARD, player);
     }
 };
 
@@ -159,9 +155,7 @@ public:
 
     bool OnUse(Player *player, Item *item,
                SpellCastTargets const & /*targets*/) override {
-        if (CharTitlesEntry const *titleEntry = sCharTitlesStore.LookupEntry(
-            BANE_OF_FALLEN_KING))
-            player->SetTitle(titleEntry);
+        return grantTitleReward(BANE_OF_FALLEN_KING, player);
     }
 };
 
@@ -172,9 +166,7 @@ public:
 
     bool OnUse(Player *player, Item *item,
                SpellCastTargets const & /*targets*/) override {
-        if (CharTitlesEntry const *titleEntry = sCharTitlesStore.LookupEntry(
-            CHAMPION))
-            player->SetTitle(titleEntry);
+        return grantTitleReward(CHAMPION, player);
     }
 };
 
@@ -185,9 +177,7 @@ public:
 
     bool OnUse(Player *player, Item *item,
                SpellCastTargets const & /*targets*/) override {
-        if (CharTitlesEntry const *titleEntry = sCharTitlesStore.LookupEntry(
-            BLOODSAIL))
-            player->SetTitle(titleEntry);
+        return grantTitleReward(BLOODSAIL, player);
     }
 };
 
@@ -198,9 +188,7 @@ public:
 
     bool OnUse(Player *player, Item *item,
                SpellCastTargets const & /*targets*/) override {
-        if (CharTitlesEntry const *titleEntry = sCharTitlesStore.LookupEntry(
-            CRUSADER))
-            player->SetTitle(titleEntry);
+        return grantTitleReward(CRUSADER, player);
     }
 };
 
@@ -211,9 +199,7 @@ public:
 
     bool OnUse(Player *player, Item *item,
                SpellCastTargets const & /*targets*/) override {
-        if (CharTitlesEntry const *titleEntry = sCharTitlesStore.LookupEntry(
-            CELESTIAL_DEFENDER))
-            player->SetTitle(titleEntry);
+        return grantTitleReward(CELESTIAL_DEFENDER, player);
     }
 };
 
@@ -227,8 +213,7 @@ public:
 
     bool OnUse(Player *player, Item *item,
                SpellCastTargets const & /*targets*/) override {
-        if (!player->HasSpell(MAGIC_ROOSTER))
-            player->LearnSpell(MAGIC_ROOSTER, false);
+        return grantMountReward(MAGIC_ROOSTER, player);
     }
 };
 
@@ -239,8 +224,7 @@ public:
 
     bool OnUse(Player *player, Item *item,
                SpellCastTargets const & /*targets*/) override {
-        if (!player->HasSpell(BREWFEST_RAM))
-            player->LearnSpell(BREWFEST_RAM, false);
+        return grantMountReward(BREWFEST_RAM, player);
     }
 };
 
@@ -251,8 +235,7 @@ public:
 
     bool OnUse(Player *player, Item *item,
                SpellCastTargets const & /*targets*/) override {
-        if (!player->HasSpell(AMANI_WAR_BEAR))
-            player->LearnSpell(AMANI_WAR_BEAR, false);
+        return grantMountReward(AMANI_WAR_BEAR, player);
     }
 };
 
@@ -263,8 +246,7 @@ public:
 
     bool OnUse(Player *player, Item *item,
                SpellCastTargets const & /*targets*/) override {
-        if (!player->HasSpell(ZULIAN_TIGER))
-            player->LearnSpell(ZULIAN_TIGER, false);
+        return grantMountReward(ZULIAN_TIGER, player);
     }
 };
 
@@ -275,8 +257,7 @@ public:
 
     bool OnUse(Player *player, Item *item,
                SpellCastTargets const & /*targets*/) override {
-        if (!player->HasSpell(FIERY_WARHORSE))
-            player->LearnSpell(FIERY_WARHORSE, false);
+        return grantMountReward(FIERY_WARHORSE, player);
     }
 };
 
@@ -290,12 +271,10 @@ public:
 
         switch (player->GetTeam()) {
             case 0:
-                if (!player->HasSpell(WAR_TIGER))
-                    player->LearnSpell(WAR_TIGER, false);
+                return grantMountReward(WAR_TIGER, player);
                 break;
             default:
-                if (!player->HasSpell(WAR_WOLF))
-                    player->LearnSpell(WAR_WOLF, false);
+                return grantMountReward(WAR_WOLF, player);
         }
 
     }
@@ -309,9 +288,7 @@ public:
     bool OnUse(Player *player, Item *item,
                SpellCastTargets const & /*targets*/) override {
 
-        if (!player->HasSpell(DARK_RIDING_TALBUK)) {
-            player->LearnSpell(DARK_RIDING_TALBUK, false);
-        }
+        return grantMountReward(DARK_RIDING_TALBUK, player);
 
     }
 };
@@ -324,9 +301,7 @@ public:
     bool OnUse(Player *player, Item *item,
                SpellCastTargets const & /*targets*/) override {
 
-        if (!player->HasSpell(SPECTRAL_TIGER)) {
-            player->LearnSpell(SPECTRAL_TIGER, false);
-        }
+        return grantMountReward(SPECTRAL_TIGER, player);
 
     }
 };
@@ -339,9 +314,7 @@ public:
     bool OnUse(Player *player, Item *item,
                SpellCastTargets const & /*targets*/) override {
 
-        if (!player->HasSpell(RAVEN_LORD)) {
-            player->LearnSpell(RAVEN_LORD, false);
-        }
+        return grantMountReward(RAVEN_LORD, player);
 
     }
 };
@@ -354,9 +327,7 @@ public:
     bool OnUse(Player *player, Item *item,
                SpellCastTargets const & /*targets*/) override {
 
-        if (!player->HasSpell(INVINCIBLE)) {
-            player->LearnSpell(INVINCIBLE, false);
-        }
+        return grantMountReward(INVINCIBLE, player);
 
     }
 };
@@ -369,9 +340,7 @@ public:
     bool OnUse(Player *player, Item *item,
                SpellCastTargets const & /*targets*/) override {
 
-        if (!player->HasSpell(ASHES_OF_ALAR)) {
-            player->LearnSpell(ASHES_OF_ALAR, false);
-        }
+        return grantMountReward(ASHES_OF_ALAR, player);
 
     }
 };
@@ -384,9 +353,7 @@ public:
     bool OnUse(Player *player, Item *item,
                SpellCastTargets const & /*targets*/) override {
 
-        if (!player->HasSpell(BREWFEST_KODO)) {
-            player->LearnSpell(BREWFEST_KODO, false);
-        }
+        return grantMountReward(BREWFEST_KODO, player);
 
     }
 };
@@ -399,9 +366,7 @@ public:
     bool OnUse(Player *player, Item *item,
                SpellCastTargets const & /*targets*/) override {
 
-        if (!player->HasSpell(CELESTIAL_STEED)) {
-            player->LearnSpell(CELESTIAL_STEED, false);
-        }
+        return grantMountReward(CELESTIAL_STEED, player);
 
     }
 };
@@ -420,7 +385,7 @@ public:
         return true;
     }
 
-    bool OnExpire(Player* player, ItemTemplate const* /*proto*/) override {
+    bool OnExpire(Player *player, ItemTemplate const * /*proto*/) override {
         if (player->HasAura(SEASON_1_EFFECT)) {
             player->RemoveAura(SEASON_1_EFFECT);
         }
@@ -428,10 +393,10 @@ public:
     }
 
     // Called when the item is destroyed.
-    bool OnRemove(Player* player, Item* /*item*/) override {
+    bool OnRemove(Player *player, Item * /*item*/) override {
         if (player->HasAura(SEASON_1_EFFECT)) {
-                player->RemoveAura(SEASON_1_EFFECT);
-            }
+            player->RemoveAura(SEASON_1_EFFECT);
+        }
         return true;
     }
 
@@ -494,7 +459,7 @@ public:
         }
 
         static void AddRewardGossipMenu(Player *player, REWARD_TYPE rewardType) {
-            std::vector<Reward> menuRewards;
+            std::vector <Reward> menuRewards;
             for (const Reward &itr : rewards) {
                 if (itr.type == rewardType) {
                     menuRewards.push_back(itr);

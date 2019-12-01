@@ -54,6 +54,7 @@ public:
                     player->TeleportTo(571, 5804.1499f, 624.7710f, 647.7670f, 1.6400f);
                 }
             }
+            return true;
         };
     };
 

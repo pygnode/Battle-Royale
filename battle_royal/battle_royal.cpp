@@ -108,9 +108,9 @@ void BattleRoyale::HandleInfectionKill(Player* player)
 void BattleRoyale::HandleKill(Player* player, Unit *killed) {
 
     if (killed->GetTypeId() == TYPEID_PLAYER) {
-         player->AddItem(ITEM_KILL_TOKEN, 1);
-         Player* victim = static_cast<Player*>(killed);
-         RemovePlayerFromRoyal(victim);
+        player->AddItem(ITEM_KILL_TOKEN, 1);
+        Player* victim = static_cast<Player*>(killed);
+        RemovePlayerFromRoyal(victim);
         char msg[250];
         snprintf(msg, 250,
                  "%s killed %s! Better luck next time!",
@@ -216,7 +216,7 @@ void BattleRoyale::resetRoyale() {
 
 void BattleRoyale::setNewRelic() {
 
-   // 5 min -> 5 min -> 3:20 -> 2:20 -> 2:30 -> 1:30 -> 2:00 -> 1:00 -> 2:00 -> 0:40 -> 1:30 -> 1:30 -> 0:30 -> 1:00 -> 0:30
+    // 5 min -> 5 min -> 3:20 -> 2:20 -> 2:30 -> 1:30 -> 2:00 -> 1:00 -> 2:00 -> 0:40 -> 1:30 -> 1:30 -> 0:30 -> 1:00 -> 0:30
     switch(currentIteration) {
         case 1:
             relicSwitchTimer = FIVE_MINUTES_IN_MS;
@@ -358,10 +358,10 @@ bool BattleRoyale::Update(uint32 diff) {
                  "The Battle Royale has begun! Good luck! (Players: [%lu])",
                  playersInRoyale.size());
         sWorld->SendServerMessage(SERVER_MSG_STRING, msg);
-            game_master->Yell("The battle royal has begun!",
-                                LANG_UNIVERSAL);
-            return true;
-        }
+        game_master->Yell("The battle royal has begun!",
+                          LANG_UNIVERSAL);
+        return true;
+    }
 
     return true;
 }
