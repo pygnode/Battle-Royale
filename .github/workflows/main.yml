@@ -50,8 +50,5 @@ jobs:
         -DSCRIPTS_NORTHREND="disabled" \
          TrinityCore/
     - name: Make
-      run: |
-        ls
-        cd TrinityCore/src/server/worldserver
-        make
+      run: make
         
