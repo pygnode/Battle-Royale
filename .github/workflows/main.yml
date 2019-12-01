@@ -35,6 +35,7 @@ jobs:
       run: |
         git clone https://github.com/TrinityCore/TrinityCore.git
         cp -r battle_royal* TrinityCore/src/server/scripts/Custom/
+        cp custom_script_loader.cpp TrinityCore/src/server/scripts/Custom/
     - name: Test Compile
       run: |
         cmake \
