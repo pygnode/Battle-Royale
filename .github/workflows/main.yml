@@ -51,8 +51,7 @@ jobs:
          TrinityCore/
     - name: Make
       run: |
-        cd Battle-Royale
         ls
-        cd src/server/worldserver
+        cd TrinityCore/src/server/worldserver
         make
         
