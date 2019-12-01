@@ -51,7 +51,7 @@ jobs:
          TrinityCore/
     - name: Build
       run: |
-          cd TrinityCore \
-          cmake --target all \
+          cd TrinityCore
+          cmake --target all
           cmake --taret worldserver
         
