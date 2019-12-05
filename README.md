@@ -1,6 +1,10 @@
 Trinity Battle Royale
 ---------------------
 
+<p>
+  <a href="https://github.com/pygnode/Battle-Royale"><img alt="GitHub Actions status" src="https://github.com/pygnode/Battle-Royale/workflows/CI/badge.svg"></a>
+</p>
+
 
 Trinity Battle Royale is a custom outdoor pvp experience for TrinityCore 3.3.5a. 
 
