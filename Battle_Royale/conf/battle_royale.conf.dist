@@ -1,0 +1,7 @@
+[worldserver]
+#
+# Enable Enables Moonglade Battle Royale
+# default: true
+#
+
+BattleRoyale.enable=true
