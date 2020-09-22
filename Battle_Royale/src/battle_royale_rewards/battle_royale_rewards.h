@@ -123,6 +123,7 @@ const std::vector<Reward> rewards{
 
         /* Items */
         {23162, "Foror's Create (36 Slot Bag)",            2,  BLOODSHED_TOKEN, REWARD_TYPE_ITEM},
+        {23162, "Foror's Create (36 Slot Bag)",            1,  KINGS_BADGE,     REWARD_TYPE_ITEM},
 
 
         // 696905 - Season 1 Shirt - spell effect: 62579
