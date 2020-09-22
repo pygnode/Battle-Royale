@@ -1097,7 +1097,7 @@ INSERT INTO acore_world.item_template (entry, class, subclass, SoundOverrideSubc
                                        RequiredDisenchantSkill, ArmorDamageModifier, duration, ItemLimitCategory,
                                        HolidayId, DisenchantID, FoodType, minMoneyLoot, maxMoneyLoot, flagsCustom,
                                        VerifiedBuild)
-VALUES (69616, 15, 0, -1, 'item_battle_royal_reward_title_bane_of_fallen_king', 'Grants the Champion title.',
+VALUES (69616, 15, 0, -1, 'item_battle_royal_reward_title_champion', 'Grants the Champion title.',
         'Title: Champion', 6270, 4, 64, 0, 1, 0, 10000, 0, -1, -1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1000, 0, 0,
         13567, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1,
