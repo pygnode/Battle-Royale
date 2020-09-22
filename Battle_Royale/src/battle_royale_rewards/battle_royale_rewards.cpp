@@ -474,7 +474,7 @@ public:
                 CloseGossipMenuFor(player);
                 break;
         }
-        return false;
+        return true;
     };
 
 
