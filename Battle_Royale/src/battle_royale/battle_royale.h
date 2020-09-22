@@ -85,10 +85,12 @@ private:
     int m_zoneId;
     GuidDeque queue;
     GuidSet playersInRoyale;
+    bool royaleEnabled = true;
     bool gameStarted = false;
     bool aggressivePlayers = false;
     bool startInfecting = false;
     int playerLimit = 40;
+    int requiredPlayers = 2;
     int currentIteration = 1;
     int startTimer = 60000;
     int relicSwitchTimer = 60000;

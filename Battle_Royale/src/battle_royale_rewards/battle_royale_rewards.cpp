@@ -43,7 +43,7 @@ public:
             "item_battle_royal_reward_title_vanquisher") {}
 
     bool OnUse(Player *player, Item* /*item*/,
-               SpellCastTargets const & /*targets*/) override {
+               SpellCastTargets const & /*targets*/) {
         return grantTitleReward(VANQUISHER, player);
     }
 };
@@ -379,6 +379,8 @@ public:
 
         if (!player->HasAura(SEASON_1_EFFECT)) {
             player->AddAura(SEASON_1_EFFECT, player);
+        } else {
+            player->RemoveAurasDueToSpell(SEASON_1_EFFECT);
         }
         return true;
     }
@@ -424,7 +426,7 @@ public:
 
 
     // icons -  https://wotlk.evowow.com/?icon=240
-    bool onGossipHello(Player *player, Creature *vendor) {
+    bool OnGossipHello(Player *player, Creature *vendor) override {
         ClearGossipMenuFor(player);
         AddGossipItemFor(player, GOSSIP_ICON_CHAT,
                          "|TInterface/ICONS/INV_Misc_Book_11:30:30:-18:0|tTitles",
@@ -451,17 +453,17 @@ public:
             case TITLE_REWARDS:
                 CloseGossipMenuFor(player);
                 AddRewardGossipMenu(player, REWARD_TYPE_TITLE);
-                SendGossipMenuFor(player, 696900, creature->GetGUID());
+                SendGossipMenuFor(player, DEFAULT_GOSSIP_MESSAGE, creature->GetGUID());
                 break;
             case MOUNT_REWARDS:
                 CloseGossipMenuFor(player);
                 AddRewardGossipMenu(player, REWARD_TYPE_MOUNT);
-                SendGossipMenuFor(player, 696900, creature->GetGUID());
+                SendGossipMenuFor(player, DEFAULT_GOSSIP_MESSAGE, creature->GetGUID());
                 break;
             case ITEM_REWARDS:
                 CloseGossipMenuFor(player);
                 AddRewardGossipMenu(player, REWARD_TYPE_ITEM);
-                SendGossipMenuFor(player, 696900, creature->GetGUID());
+                SendGossipMenuFor(player, DEFAULT_GOSSIP_MESSAGE, creature->GetGUID());
                 break;
             case EXCHANGE_REWARDS:
                 ExchangeTokens(player);
@@ -544,7 +546,7 @@ public:
 };
 
 
-void AddBattle_RoyaleRewardsScripts() {
+void Battle_RoyaleRewardsScripts() {
     // Kills Title Rewards
     new item_battle_royal_reward_title_battlemaster();
     new item_battle_royal_reward_title_blood_guard();

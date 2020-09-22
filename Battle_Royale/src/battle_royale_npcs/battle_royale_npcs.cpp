@@ -6,16 +6,13 @@
 #include "SpellInfo.h"
 
 
-class npc_battle_royal_teleporter : public CreatureScript {
+class npc_battle_royale_teleporter : public CreatureScript
+{
 public:
-    npc_battle_royal_teleporter() : CreatureScript(
-            "npc_battle_royal_teleporter") {
-    }
+    npc_battle_royale_teleporter() : CreatureScript("npc_battle_royale_teleporter") {}
 
-    // Called when the player opens the gossip menu assigned to this creature
-    bool OnGossipHello(Player *player, Creature *creature) override {
-        ClearGossipMenuFor(player);
 
+    bool OnGossipHello(Player* player, Creature* creature) override {
         uint32 zone = player->GetZoneId();
         if (zone != 493) {
             AddGossipItemFor(player, GOSSIP_ICON_CHAT,
@@ -32,7 +29,7 @@ public:
         return true;
     }
 
-    bool OnGossipSelect(Player* player, Creature* /*creature*/, uint32 /*uiSender*/, uint32 /*uiAction*/) override {
+    bool OnGossipSelect(Player* player, Creature* /*creature*/, uint32 /*sender*/, uint32 /*action*/) override {
         ClearGossipMenuFor(player);
         CloseGossipMenuFor(player);
         if (player->IsAlive() && !player->IsBeingTeleported()) {
@@ -46,20 +43,22 @@ public:
             }
         }
         return true;
+    }
+
+    struct npc_battle_royale_teleporterAI : public ScriptedAI {
+        npc_battle_royale_teleporterAI(Creature* creature) : ScriptedAI(creature)
+        {
+                        // Constructor, define variables here
+        }
     };
 
-
-    struct TeleporterAI : public ScriptedAI {
-    public:
-        TeleporterAI(Creature *creature) : ScriptedAI(creature) {}
-    };
-
-    CreatureAI *GetAI(Creature *creature) const override {
-        return new TeleporterAI(creature);
+    CreatureAI* GetAI(Creature* creature) const override
+    {
+        return new npc_battle_royale_teleporterAI(creature);
     }
 
 };
 
-void AddBattle_RoyaleNPCsScripts() {
-    new npc_battle_royal_teleporter();
+void Battle_RoyaleNPCsScripts() {
+    new npc_battle_royale_teleporter();
 }

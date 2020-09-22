@@ -14,6 +14,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <random>
+#include "Configuration/Config.h"
 
 enum REWARD_CURRENCY {
     BLOODSHED_TOKEN = 69600,
@@ -32,44 +33,53 @@ int const SPELL_INFECT_DMG4 = 11821;
 int const FIVE_MINUTES_IN_MS = 300000;
 int const ONE_MINUTE_IN_MS = 60000;
 int RELIC = 1;
-int const ROYALE_MAP_ID = 493;
+//int const ROYALE_ZONE_ID = 493; // Moonglade
+int const ROYALE_MAP_ID = 1;
+
+class BattleRoyaleWorldScript : public WorldScript
+
+{
+public:
+
+    BattleRoyaleWorldScript() : WorldScript("BattleRoyaleConfig") { }
+
+    void OnBeforeConfigLoad(bool reload) override
+    {
+        if (!reload) {
+            std::string conf_path = _CONF_DIR;
+            std::string cfg_file = conf_path + "/battle_royale.conf";
+            sConfigMgr->LoadMore(cfg_file.c_str());
+        }
+    }
+};
 
 class BattleRoyalRelic : public GameObjectScript {
 public:
     BattleRoyalRelic() : GameObjectScript("battle_royale_relic") {}
 
-    struct BattleRoyalRelicAI : public GameObjectAI {
-        explicit BattleRoyalRelicAI(GameObject *go) : GameObjectAI(go) {}
-
-        bool GossipHello(Player *player, bool /*reportUse*/) override {
-            int spellID;
-            switch (RELIC) {
-                case 1:
-                    spellID = SPELL_RELIC_BUFF_1;
-                    break;
-                case 2:
-                    spellID = SPELL_RELIC_BUFF_2;
-                    break;
-                case 3:
-                    spellID = SPELL_RELIC_BUFF_3;
-                    break;
-                default:
-                    return true;
-            }
-
-            if (!player->HasAura(spellID)) {
-                player->SetAuraStack(spellID, player, 1);
-            } else {
-                player->RemoveAura(spellID);
-            }
-            return true;
+    bool OnGossipHello(Player *player, GameObject* /*go*/) override {
+        int spellID;
+        switch (RELIC) {
+            case 1:
+                spellID = SPELL_RELIC_BUFF_1;
+                break;
+            case 2:
+                spellID = SPELL_RELIC_BUFF_2;
+                break;
+            case 3:
+                spellID = SPELL_RELIC_BUFF_3;
+                break;
+            default:
+                return true;
         }
-    };
 
-    GameObjectAI *GetAI(GameObject *go) const override {
-        return new BattleRoyalRelicAI(go);
+        if (!player->HasAura(spellID)) {
+            player->SetAuraStack(spellID, player, 1);
+        } else {
+            player->RemoveAura(spellID);
+        }
+        return true;
     }
-
 };
 
 class OutdoorPvP_moonglade_battle_royal : public OutdoorPvPScript {
@@ -84,6 +94,8 @@ public:
 BattleRoyale::BattleRoyale() {
     m_TypeId = OUTDOOR_PVP_BR;
     m_zoneId = 493;
+    royaleEnabled = sConfigMgr->GetBoolDefault("Battle_Royale.Core.Enable", true);
+    requiredPlayers = sConfigMgr->GetIntDefault("Battle_Royale.Core.RequiredPlayers", 2);
     spawnPointNighthaven = Position(7830.34f, -2433.79f, 488.01f, 4.74f);
     spawnPointShrine = Position(7842.36f, -2225.37f, 468.40, 4.05f);
     spawnPointDens = Position(7563.89f, -2951.61f, 466.69f, 1.51f);
@@ -355,7 +367,6 @@ bool BattleRoyale::Update(uint32 diff) {
     return true;
 }
 
-
 int BattleRoyale::getRelicBuffSpellID() {
     int spellID;
     switch (RELIC) {
@@ -374,7 +385,6 @@ int BattleRoyale::getRelicBuffSpellID() {
     }
     return spellID;
 }
-
 
 void BattleRoyale::AwardWinner() {
     if (!playersInRoyale.empty()) {
@@ -417,7 +427,7 @@ void BattleRoyale::clearExistingRelicBuffs() {
         uint64 playerGuid = *itr;
         ++itr;
         if (Player *player = ObjectAccessor::FindPlayer(playerGuid)) {
-            if (player->IsAlive() && player->HasAura(spellID)) {
+            if (player->HasAura(spellID)) {
                 player->RemoveAura(spellID);
             }
         }
@@ -434,7 +444,7 @@ void BattleRoyale::infectPlayers() {
         if (Player *player = ObjectAccessor::FindPlayer(playerGuid)) {
             if (player->IsAlive() && !player->HasAura(relicAuraSpellID)) {
                 player->CastSpell(player, SPELL_INFECT_DMG4, true);
-                if (!player->IsAlive()) {
+                if (!player->IsAlive() && (int) playersInRoyale.size() != 1) {
                     HandleInfectionKill(player);
                 }
             }
@@ -443,7 +453,7 @@ void BattleRoyale::infectPlayers() {
 }
 
 bool BattleRoyale::checkShouldStart() {
-    return !gameStarted && queue.size() >= 3;
+    return royaleEnabled && !gameStarted && (int) queue.size() >= requiredPlayers;
 }
 
 void BattleRoyale::RemoveExtraPlayers() {
@@ -539,7 +549,8 @@ GameObject *BattleRoyale::SpawnGameObject(uint32 entry, Position const &pos) {
 }
 
 
-void AddBattle_RoyaleScripts() {
+void Battle_RoyaleScripts() {
+    new BattleRoyaleWorldScript();
     new OutdoorPvP_moonglade_battle_royal();
     new BattleRoyalRelic();
 }

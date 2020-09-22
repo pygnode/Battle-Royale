@@ -52,8 +52,8 @@ enum SEASON_SHIRT_EFFECTS {
 enum REWARD_VENDOR_OPTIONS {
     TITLE_REWARDS = 0,
     MOUNT_REWARDS = 1,
-    EXCHANGE_REWARDS = 2,
-    ITEM_REWARDS = 3
+    ITEM_REWARDS = 2,
+    EXCHANGE_REWARDS = 3
 };
 
 
@@ -102,6 +102,9 @@ const std::vector<Reward> rewards{
         {69615,  "Crusader",                                3,  KINGS_BADGE,     REWARD_TYPE_TITLE},
         {69616, "Champion",                                1,  KINGS_BADGE,     REWARD_TYPE_TITLE},
 
+//        Script named 'item_battle_royal_reward_title_bane_of_fallen_king' is not assigned in the database.
+//
+//        Script named 'item_battle_royal_reward_title_champion' is not assigned in the database.
         /* Mounts */
         {69617, "Magic Rooster",                           30, BLOODSHED_TOKEN, REWARD_TYPE_MOUNT},
         {69618, "Brewfest Ram",                            30, BLOODSHED_TOKEN, REWARD_TYPE_MOUNT},
