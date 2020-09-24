@@ -1,0 +1,26 @@
+########################################
+# Battle_Royale module configuration
+########################################
+[worldserver]
+
+###################################################################################################
+# Battle_Royale CORE CONFIG
+#
+#
+#    Battle_Royale.Core.Enable
+#       Description: Enable Battle Royale.
+#
+#       Default: 0  - (Disable)
+#        	     1  - (Enable)
+#
+
+Battle_Royale.Core.Enable = 0
+
+#
+#    Battle_Royale.Core.RequiredPlayers
+#       Description: Number of players required to start a Royale.
+#
+#       Default: 2
+#
+
+Battle_Royale.Core.RequiredPlayers = 2
