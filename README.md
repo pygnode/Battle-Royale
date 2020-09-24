@@ -1,13 +1,7 @@
 AzerothCore Battle Royale
 ---------------------
 
-** PLEASE VIEW UPDATED README UNDER THE `Battle_Royale` DIRECTORY. **
-
-
-
-
-
-Battle Royale is a custom outdoor pvp experience for AzerothCore-Wotlk
+AzerothCore Battle Royale is a custom outdoor pvp experience for azerothCore-wotlk. 
 
 Tons of Players can engage in a massive free for all where there is only one winner. 
 
@@ -46,7 +40,36 @@ Details
 
 How to install
 ----------------
-View README under `Battle_Royale` directory.
+
+
+1. Copy the `Battle_Royale` directory to `/modules` in your azerothcore directory
+
+```
+cp -R Battle_Royale/* $AZEROTHCORE_ROOT/modules/
+```
+
+
+where $AZEROTHCORE_ROOT is the root of your azerothcore code.
+
+2. Run the `production.sql` scripts under `./sql/world/base` in your Database for custom reward items, npcs, and quests.
+
+3. Add `OUTDOOR_PVP_BR` value to `OutdoorPvPTypes` enum inside `/server/game/OutdoorPvP/OutdoorPvP.h` and increase the max types by 1.
+```
+OutdoorPvP.h
+enum OutdoorPvPTypes
+{
+    OUTDOOR_PVP_HP = 1,
+    OUTDOOR_PVP_NA = 2,
+    OUTDOOR_PVP_TF = 3,
+    OUTDOOR_PVP_ZM = 4,
+    OUTDOOR_PVP_SI = 5,
+    OUTDOOR_PVP_EP = 6,
+    OUTDOOR_PVP_GH = 7,
+    OUTDOOR_PVP_BR = 8, <-- Here
+};
+
+#define MAX_OUTDOORPVP_TYPES 9 <-- Here
+```
 
 
 Contributing
