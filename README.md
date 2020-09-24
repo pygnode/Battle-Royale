@@ -1,7 +1,7 @@
 AzerothCore Battle Royale
 ---------------------
 
-** PLEASE VIEW UPDATED README UNDER THE `BATTLE_ROYALE` DIRECTORY. **
+** PLEASE VIEW UPDATED README UNDER THE `Battle_Royale` DIRECTORY. **
 
 
 
