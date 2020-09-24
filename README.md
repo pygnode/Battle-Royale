@@ -1,12 +1,13 @@
-Trinity Battle Royale
+AzerothCore Battle Royale
 ---------------------
 
-<p>
-  <a href="https://github.com/pygnode/Battle-Royale"><img alt="GitHub Actions status" src="https://github.com/pygnode/Battle-Royale/workflows/CI/badge.svg"></a>
-</p>
+** PLEASE VIEW UPDATED README UNDER THE `BATTLE_ROYALE` DIRECTORY. **
 
 
-Trinity Battle Royale is a custom outdoor pvp experience for TrinityCore 3.3.5a. 
+
+
+
+Battle Royale is a custom outdoor pvp experience for AzerothCore-Wotlk
 
 Tons of Players can engage in a massive free for all where there is only one winner. 
 
@@ -45,52 +46,7 @@ Details
 
 How to install
 ----------------
-
-
-1. Copy all the follow directories under `src/server/scripts/Custom` in your trinitycore directory
-
-```
-cp -R battle_royal* $TRINITY_ROOT/src/server/scripts/Custom
-```
-
-
-where $TRINITY_ROOT is the root of your trinitycore code.
-
-2. Add the loading function definitions to your `custom_script_loader.cpp` (See uploaded example)
-
-```
-...
-void AddSC_battle_royal();
-void AddSC_battle_royal_rewards();
-void AddSC_battle_royal_gamemaster();
-
-void AddCustomScripts()
-{
-    ...
-    AddSC_battle_royal();
-    AddSC_battle_royal_gamemaster();
-    AddSC_battle_royal_rewards();
-}
-```
-
-3. Run the `.sql` scripts under `./sql` in your Database for custom reward items, npcs, and quests.
-
-4. Add `OUTDOOR_PVP_BR` value to `OutdoorPvPTypes` enum inside `/server/game/OutdoorPvP/OutdoorPvP.h`
-```
-OutdoorPvP.h
-enum OutdoorPvPTypes
-{
-    OUTDOOR_PVP_HP = 1,
-    OUTDOOR_PVP_NA,
-    OUTDOOR_PVP_TF,
-    OUTDOOR_PVP_ZM,
-    OUTDOOR_PVP_SI,
-    OUTDOOR_PVP_EP,
-    OUTDOOR_PVP_BR, // <-- Here
-
-    MAX_OUTDOORPVP_TYPES
-};
-```
+View README under `Battle_Royale` directory.
 
 
 Contributing
