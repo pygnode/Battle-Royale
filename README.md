@@ -1,5 +1,7 @@
-Trinity Battle Royale
+Trinity Battle Royale 
 ---------------------
+
+## Looking for a AzerothCore compatible version? Use the [azerothcore](https://github.com/pygnode/Battle-Royale/tree/azerothcore) branch. 
 
 <p>
   <a href="https://github.com/pygnode/Battle-Royale"><img alt="GitHub Actions status" src="https://github.com/pygnode/Battle-Royale/workflows/CI/badge.svg"></a>
